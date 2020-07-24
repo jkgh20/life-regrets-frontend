@@ -1,24 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+let numberOfRegrets = 100;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <p>
+        Someone regrets...
+      </p>
+      <p>
+        This is my first regret.
+      </p>
+      <button type="button">Read Another</button>
+
+      <br />
+      <br />
+      <br />
+
+      <p>
+        {numberOfRegrets} regrets and counting. What's yours?
+      </p>
+      <form action="">
+        <textarea name="message" rows="10" cols="30"></textarea><br />
+        <input type="submit" value="Send" />
+      </form>
+
+      <br />
+      <br />
+      <br />
+
+      <footer>
+        <a href="">About</a>
+      </footer>
     </div>
   );
 }
