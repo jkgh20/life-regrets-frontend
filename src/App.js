@@ -29,6 +29,7 @@ class App extends React.Component {
 
         <WriteView
           numberOfRegrets={this.state.numberOfRegrets}
+          setNumberOfRegrets={this.setNumberOfRegrets}
         />
 
         <div id="footer">

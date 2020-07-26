@@ -79,9 +79,14 @@ class ReadView extends React.Component {
   }
 
   async componentDidMount() {
-    this.queryDb(true);
     this.typeHeader();
-    await sleep(4800);
+
+    // Sleep for 2 seconds to prevent unnecessary queries on brief visits
+    await sleep(2000);
+    this.queryDb(true);
+
+    // Let header finish typing before typing random or queried message
+    await sleep(2800);
     this.typeMessage(this.state.message)
   }
 
@@ -100,6 +105,7 @@ class ReadView extends React.Component {
         </h1>
         <p id="read-message">
           <span
+            // style={{ whiteSpace: 'pre' }}
             ref={messageText => { this.messageText = messageText; }}
           />
         </p>
