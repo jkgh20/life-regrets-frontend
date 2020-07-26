@@ -1,5 +1,5 @@
 import './App.css';
-import { LAMBDA_URL } from './Helper.js'
+import { DEFAULT_MESSAGES, LAMBDA_URL } from './Helper.js'
 import axios from 'axios';
 import React from 'react';
 import Typed from 'typed.js';
@@ -29,8 +29,7 @@ class ReadView extends React.Component {
       });
     } else {
       let count = this.props.numberOfRegrets;
-      let messages = this.props.defaultMessages;
-      let randomMessage = messages[Math.floor(Math.random() * count)]
+      let randomMessage = DEFAULT_MESSAGES[Math.floor(Math.random() * count)]
       this.setState({
         message: randomMessage
       });
