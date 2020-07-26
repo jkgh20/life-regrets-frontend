@@ -2,7 +2,7 @@ import './App.css';
 import axios from 'axios';
 import React from 'react';
 
-let LAMBDA_URL = "https://tv0ci474f6.execute-api.us-east-2.amazonaws.com/prod";
+let LAMBDA_URL = "https://m8o1q7cin4.execute-api.us-east-2.amazonaws.com/prod";
 let DEFAULT_MESSAGES = [
   "Not getting divorced sooner. Spent too much time being miserable.",
   "Not spending enough time with my son when he was younger.",
@@ -47,24 +47,24 @@ class App extends React.Component {
   queryDb(onFirstLoad) {
     axios.get(`${LAMBDA_URL}/read`)
       .then(response => {
+        if (onFirstLoad) {
+          this.setState({
+            count: response.data.count
+          });
+        }
         this.setState({
-          count: response.data.count,
           message: response.data.message
         });
       })
       .catch(error => {
-        console.log(error);
-        if (onFirstLoad) {
-          this.setState({
-            count: DEFAULT_COUNT,
-            message: DEFAULT_MESSAGES[Math.floor(Math.random() * DEFAULT_COUNT)]
-          });
-        }
+        this.setState({
+          message: DEFAULT_MESSAGES[Math.floor(Math.random() * DEFAULT_COUNT)]
+        });
       });
   }
 
-  writeToDb() {
-    axios.post(`${LAMBDA_URL}/write`, {message: "I regret not exercising in my 20s."})
+  writeToDb(inputMessage) {
+    axios.post(`${LAMBDA_URL}/write`, {message: inputMessage})
       .catch(() => {})
       .then(() => {});
   }
@@ -96,7 +96,7 @@ class App extends React.Component {
           <textarea name="message" rows="10" cols="30"></textarea><br />
           <Button
             value="Send"
-            onClick={() => this.writeToDb()}
+            onClick={() => this.writeToDb("My life.")}
           />
         </div>
 
