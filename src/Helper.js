@@ -11,3 +11,7 @@ export const DEFAULT_MESSAGES = [
   "Not buying a thousand bitcoins when they were worth $3!",
   "Being born.",
 ];
+
+export function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}

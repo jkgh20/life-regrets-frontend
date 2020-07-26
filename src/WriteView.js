@@ -1,5 +1,5 @@
 import './App.css';
-import { LAMBDA_URL } from './Helper.js'
+import { sleep, LAMBDA_URL } from './Helper.js'
 import axios from 'axios';
 import React from 'react';
 
@@ -11,9 +11,11 @@ class WriteView extends React.Component {
 
     this.updateMessageInput = this.updateMessageInput.bind(this);
     this.writeToDb = this.writeToDb.bind(this);
+    this.resetState = this.resetState.bind(this);
 
     this.state = {
-      messageInput: ""
+      messageInput: "",
+      visible: true
     }
   }
 
@@ -46,9 +48,21 @@ class WriteView extends React.Component {
       .then(() => {});
   }
 
+  async resetState() {
+    this.setState({
+      visible: false
+    });
+    await sleep(400);
+    this.props.setNumberOfRegrets(this.props.numberOfRegrets + 1);
+    this.setState({
+      messageInput: "",
+      visible: true
+    });
+  }
+
   render() {
     return (
-      <div id="write">
+      <div id="write" className={this.state.visible ? 'fadeIn' : 'fadeOut'}>
         <h1>
             <span>
               {this.props.numberOfRegrets} regrets and counting... What's yours?
@@ -71,7 +85,7 @@ class WriteView extends React.Component {
           disabled={this.state.messageInput.length < 1}
           onClick={() => {
             this.writeToDb(this.state.messageInput);
-            this.props.setNumberOfRegrets(this.props.numberOfRegrets + 1);
+            this.resetState();
           }}
         >Send</button>
       </div>

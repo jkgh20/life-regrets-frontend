@@ -57,12 +57,22 @@ animation:
   -webkit-animation: fadeIn 2s linear 1.3s 1 normal backwards running;
 }
 
-#everything-else {
-  /* animation:         fadeIn 2s linear 3.5s 1 normal backwards running;
-  -o-animation:      fadeIn 2s linear 3.5s 1 normal backwards running;
-  -ms-animation:     fadeIn 2s linear 3.5s 1 normal backwards running;
-  -moz-animation:    fadeIn 2s linear 3.5s 1 normal backwards running;
-  -webkit-animation: fadeIn 2s linear 3.5s 1 normal backwards running; */
+/*
+transition:
+- transition-property
+- transition-duration
+- transition-timing-function
+- transition-delay
+*/
+
+.fadeOut {
+  opacity: 0;
+  transition: none 2s ease 10s;
+}
+
+.fadeIn {
+  opacity: 1;
+  transition: none 2s ease 10s;
 }
 
 #footer {

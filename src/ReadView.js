@@ -1,12 +1,8 @@
 import './App.css';
-import { DEFAULT_MESSAGES, LAMBDA_URL } from './Helper.js'
+import { sleep, DEFAULT_MESSAGES, LAMBDA_URL } from './Helper.js'
 import axios from 'axios';
 import React from 'react';
 import Typed from 'typed.js';
-
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
 
 class ReadView extends React.Component {
   constructor(props) {
