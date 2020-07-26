@@ -9,19 +9,18 @@ class WriteView extends React.Component {
   constructor(props) {
     super(props);
 
-    this.updateCharacterCount = this.updateCharacterCount.bind(this);
+    this.updateMessageInput = this.updateMessageInput.bind(this);
     this.writeToDb = this.writeToDb.bind(this);
 
     this.state = {
-      characterCount: 0
+      messageInput: ""
     }
   }
 
-  updateCharacterCount(event) {
-    let input = event.target.value;
+  updateMessageInput(event) {
     this.setState({
-      characterCount: input.length
-    })
+      messageInput: event.target.value,
+    });
   }
 
   writeToDb(inputMessage) {
@@ -35,22 +34,24 @@ class WriteView extends React.Component {
       <div id="write">
         <h1>
             <span>
-            {this.props.numberOfRegrets} regrets and counting... What's yours?
+              {this.props.numberOfRegrets} regrets and counting... What's yours?
             </span>
         </h1>
+
         <textarea
-            name="message"
-            rows="10"
-            cols="30"
-            onChange={this.updateCharacterCount}
-            maxLength={CHARACTER_LIMIT}
-            placeholder="I regret..."
+          value={this.state.messageInput}
+          rows="10"
+          cols="70"
+          onChange={this.updateMessageInput}
+          maxLength={CHARACTER_LIMIT}
+          placeholder="I regret..."
         />
+
         <p>
-            {this.state.characterCount}/{CHARACTER_LIMIT} characters
+            {this.state.messageInput.length}/{CHARACTER_LIMIT} characters
         </p>
         <button
-          onClick={() => this.writeToDb(this.state.message)}
+          onClick={() => this.writeToDb(this.state.messageInput)}
         >Send</button>
       </div>
     );
