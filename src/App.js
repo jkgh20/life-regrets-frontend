@@ -1,6 +1,7 @@
 import './App.css';
 import axios from 'axios';
 import React from 'react';
+import Typed from 'typed.js';
 
 let LAMBDA_URL = "https://m8o1q7cin4.execute-api.us-east-2.amazonaws.com/prod";
 let DEFAULT_MESSAGES = [
@@ -38,6 +39,7 @@ class App extends React.Component {
     super(props);
     this.queryDb = this.queryDb.bind(this);
     this.writeToDb = this.writeToDb.bind(this);
+    this.typeMessage = this.typeMessage.bind(this);
     this.state = {
       count: DEFAULT_COUNT,
       message: ""
@@ -45,22 +47,24 @@ class App extends React.Component {
   }
 
   queryDb(onFirstLoad) {
-    axios.get(`${LAMBDA_URL}/read`)
-      .then(response => {
-        if (onFirstLoad) {
-          this.setState({
-            count: response.data.count
-          });
-        }
-        this.setState({
-          message: response.data.message
-        });
-      })
-      .catch(error => {
-        this.setState({
-          message: DEFAULT_MESSAGES[Math.floor(Math.random() * DEFAULT_COUNT)]
-        });
-      });
+    this.typeMessage("Getting married to the wrong person. Now Im close to 40, no kids, mostly bald. No one wants to take a chance on me. I just spent a weekend hanging out with friends who have 6-10 year olds and I really think I've missed out. I wasted my time and her time. Time is the one thing you cant get back. Don't waste it on the wrong person.")
+    // axios.get(`${LAMBDA_URL}/read`)
+    //   .then(response => {
+    //     if (onFirstLoad) {
+    //       this.setState({
+    //         count: response.data.count
+    //       });
+    //     }
+    //     this.setState({
+    //       message: response.data.message
+    //     });
+    //     this.typeMessage(response.data.message)
+    //   })
+    //   .catch(error => {
+    //     this.setState({
+    //       message: DEFAULT_MESSAGES[Math.floor(Math.random() * DEFAULT_COUNT)]
+    //     });
+    //   });
   }
 
   writeToDb(inputMessage) {
@@ -71,6 +75,30 @@ class App extends React.Component {
 
   componentDidMount() {
     this.queryDb(true);
+
+    const options = {
+    	strings: ['Regrets.^1000 We all have them.^1000', 'Someone regrets...'],
+      typeSpeed: 45,
+      backSpeed: 15,
+      onComplete: self => self.cursor.remove(),
+      cursorChar: '_'
+    };
+    this.typed = new Typed(this.myElement, options);
+  }
+
+  componentWillUnmount() {
+    this.typed.destroy();
+  }
+
+  typeMessage(message) {
+    const options = {
+    	strings: [message],
+      typeSpeed: 5,
+      backSpeed: 15,
+      onComplete: self => self.cursor.remove(),
+      cursorChar: '_'
+    };
+    this.typed2 = new Typed(this.myMessage, options);
   }
 
   render() {
@@ -78,10 +106,14 @@ class App extends React.Component {
       <div id="app">
         <div>
           <h1 id="read-header">
-            Someone regrets...
+            <span
+              ref={myElement => { this.myElement = myElement; }}
+            />
           </h1>
           <p id="read-message">
-            {this.state.message}
+            <span
+              ref={myMessage => { this.myMessage = myMessage; }}
+            />
           </p>
         </div>
         <div id="everything-else">
