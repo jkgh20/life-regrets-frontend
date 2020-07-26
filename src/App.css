@@ -1,13 +1,78 @@
-.app {
-  margin: auto;
-  width: 60%;
-  border: 3px solid #73AD21;
+* {
+  background-color: black;
+}
+
+#app {
+  color:   white;
+  margin:  auto;
   padding: 10px;
 }
 
+/*
+animation:
+- animation-name
+- animation-duration
+- animation-timing-function
+- animation-delay
+- animation-iteration-count
+- animation-direction
+- animation-fill-mode
+- animation-play-state
+*/
+
+#read-header {
+  animation:         fadeIn 2s linear 0s 1 normal forwards running;
+  -o-animation:      fadeIn 2s linear 0s 1 normal forwards running;
+  -ms-animation:     fadeIn 2s linear 0s 1 normal forwards running;
+  -moz-animation:    fadeIn 2s linear 0s 1 normal forwards running;
+  -webkit-animation: fadeIn 2s linear 0s 1 normal forwards running;
+}
+
+#read-message {
+  animation:         fadeIn 2s linear 1.3s 1 normal backwards running;
+  -o-animation:      fadeIn 2s linear 1.3s 1 normal backwards running;
+  -ms-animation:     fadeIn 2s linear 1.3s 1 normal backwards running;
+  -moz-animation:    fadeIn 2s linear 1.3s 1 normal backwards running;
+  -webkit-animation: fadeIn 2s linear 1.3s 1 normal backwards running;
+}
+
+#everything-else {
+  animation:         fadeIn 2s linear 3.5s 1 normal backwards running;
+  -o-animation:      fadeIn 2s linear 3.5s 1 normal backwards running;
+  -ms-animation:     fadeIn 2s linear 3.5s 1 normal backwards running;
+  -moz-animation:    fadeIn 2s linear 3.5s 1 normal backwards running;
+  -webkit-animation: fadeIn 2s linear 3.5s 1 normal backwards running;
+}
+
 #footer {
+  color:    white;
   position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 2.5rem;
+  bottom:   0;
+  width:    100%;
+  padding:  10px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@-o-keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@-ms-keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@-moz-keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@-webkit-keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }

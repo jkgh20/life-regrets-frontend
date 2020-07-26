@@ -27,7 +27,7 @@ function ReadRegret(props) {
 
 function Button(props) {
   return (
-    <button className="button" onClick={props.onClick}>
+    <button id="button" onClick={props.onClick}>
       {props.value}
     </button>
   );
@@ -75,34 +75,36 @@ class App extends React.Component {
 
   render() {
     return (
-      <div class="app">
-        <div class="read">
-          <h1>
+      <div id="app">
+        <div>
+          <h1 id="read-header">
             Someone regrets...
           </h1>
-          <ReadRegret
-            value={this.state.message}
-          />
+          <p id="read-message">
+            {this.state.message}
+          </p>
+        </div>
+        <div id="everything-else">
           <Button
             value="Read another"
             onClick={() => this.queryDb(false)}
           />
-        </div>
 
-        <div class="write">
-          <h1>
-            {this.state.count} regrets and counting... What's yours?
-          </h1>
-          <textarea name="message" rows="10" cols="30"></textarea><br />
-          <Button
-            value="Send"
-            onClick={() => this.writeToDb("My life.")}
-          />
-        </div>
+          <div id="write">
+            <h1>
+              {this.state.count} regrets and counting... What's yours?
+            </h1>
+            <textarea name="message" rows="10" cols="30"></textarea><br />
+            <Button
+              value="Send"
+              onClick={() => this.writeToDb("My life.")}
+              />
+          </div>
 
-        <footer id="footer">
-          About
-        </footer>
+          <div id="footer">
+            About
+          </div>
+        </div>
       </div>
     );
   }
