@@ -1,25 +1,3 @@
-/* Some notes for me learning CSS! */
-
-/*
-animation:
-- animation-name
-- animation-duration
-- animation-timing-function
-- animation-delay
-- animation-iteration-count
-- animation-direction
-- animation-fill-mode
-- animation-play-state
-*/
-
-/*
-transition:
-- transition-property
-- transition-duration
-- transition-timing-function
-- transition-delay
-*/
-
 * {
   background-color: #111;
 }
@@ -31,26 +9,15 @@ transition:
   padding: 10px;
 }
 
-#read-view {
-}
-
-#read-header {
-}
-
 #read-message {
   box-sizing: border-box;
   height: 195px;
-
-  white-space: pre-wrap;
-
   border: 3px solid #eee;
   padding: 10px;
+  white-space: pre-wrap;
   word-wrap: break-word;
   overflow: scroll;
   border-radius: 5px;
-}
-
-#write-view {
 }
 
 .hidden {
@@ -59,20 +26,20 @@ transition:
 
 .slow-fade-in {
   animation-name: fadeIn;
-  animation-timing-function: linear;
   animation-duration: 2s;
+  animation-timing-function: linear;
 }
 
 .quick-fade-in {
   animation-name: fadeIn;
-  animation-timing-function: linear;
   animation-duration: 0.5s;
+  animation-timing-function: linear;
 }
 
 .quick-fade-out {
   animation-name: fadeOut;
-  animation-timing-function: linear;
   animation-duration: 0.5s;
+  animation-timing-function: linear;
 }
 
 @keyframes fadeIn {
