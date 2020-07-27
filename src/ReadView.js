@@ -115,12 +115,17 @@ class ReadView extends React.Component {
             ref={messageText => { this.messageText = messageText; }}
           />
         </p>
-        <Button
-          className={this.state.buttonFadeType}
-          variant="secondary"
-          size="sm"
-          onClick={() => this.queryDb(false)}
-        >Read Another</Button>
+
+        <div class="container">
+          <div class="flex-item">
+            <Button
+              className={this.state.buttonFadeType}
+              variant="secondary"
+              size="sm"
+              onClick={() => this.queryDb(false)}
+            >Read Another</Button>
+          </div>
+        </div>
       </div>
     );
   }

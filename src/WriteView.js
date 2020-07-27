@@ -71,7 +71,7 @@ class WriteView extends React.Component {
 
   render() {
     return (
-      <div id="write" className={this.state.fadeType}>
+      <div id="write-view" className={this.state.fadeType}>
         <h1>
           <span>
             {this.props.numberOfRegrets} regrets and counting... What's yours?
@@ -79,7 +79,7 @@ class WriteView extends React.Component {
         </h1>
 
         <Form.Control
-          as="textarea" rows="3"
+          as="textarea"
           id="write-message"
           value={this.state.messageInput}
           rows="7"
@@ -88,19 +88,23 @@ class WriteView extends React.Component {
           placeholder="I regret..."
         />
 
-        <p>
-          {this.state.messageInput.length}/{CHARACTER_LIMIT} characters
-        </p>
-
-        <Button
-          variant="secondary"
-          size="sm"
-          disabled={this.state.messageInput.length < 1}
-          onClick={() => {
-            this.writeToDb(this.state.messageInput);
-            this.resetState();
-          }}
-        >Send</Button>
+        <div class="container">
+          <p class="fixed">
+            {this.state.messageInput.length}/{CHARACTER_LIMIT} characters
+          </p>
+          <div class="flex-item" style={{"padding-top": "16px"}}>
+            <Button
+              class="flex-item"
+              variant="secondary"
+              size="sm"
+              disabled={this.state.messageInput.length < 1}
+              onClick={() => {
+                this.writeToDb(this.state.messageInput);
+                this.resetState();
+              }}
+            >Send</Button>
+          </div>
+        </div>
       </div>
     );
   }

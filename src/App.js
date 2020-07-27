@@ -1,6 +1,5 @@
 import './App.css';
 import { DEFAULT_MESSAGES } from './Helper.js'
-import Button from 'react-bootstrap/Button';
 import React from 'react';
 import ReadView from './ReadView';
 import WriteView from './WriteView';
@@ -32,10 +31,6 @@ class App extends React.Component {
           numberOfRegrets={this.state.numberOfRegrets}
           setNumberOfRegrets={this.setNumberOfRegrets}
         />
-
-        <div id="footer">
-          About
-        </div>
       </div>
     );
   }

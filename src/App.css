@@ -3,29 +3,45 @@
 }
 
 #app-view {
-  color:   #eee;
-  margin: auto;
+  color: #eee;
+
   width: 50%;
-  padding: 10px;
+  margin: auto;
+
+  padding-top: 10px;
 }
 
 #read-message {
-  box-sizing: border-box;
-  height: 190px;
   border: 3px solid #eee;
+  border-radius: 5px;
+  height: 192px;
   padding: 10px;
+
+  overflow: scroll;
   white-space: pre-wrap;
   word-wrap: break-word;
-  overflow: scroll;
-  border-radius: 5px;
+}
+
+#write-view {
+  padding-top: 5%;
 }
 
 #write-message {
   background-color: #111;
   color:   #eee;
+
   border: 3px solid #eee;
   border-radius: 5px;
   padding: 9px;
+}
+
+.container {
+  padding: 16px;
+  display: flex;
+}
+
+.flex-item {
+  margin-left: auto;
 }
 
 .hidden {
@@ -101,10 +117,11 @@
 }
 
 #footer {
-  color:    #eee;
+  color: #eee;
+
   position: fixed;
-  width: 100%;
   text-align: center;
+  width: 100%;
   bottom: 0;
   left: 0;
 }
