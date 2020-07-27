@@ -1,5 +1,5 @@
 import './App.css';
-import { DEFAULT_MESSAGES } from './Helper.js'
+import { FALLBACK_MESSAGES } from './Helper.js'
 import React from 'react';
 import ReadView from './ReadView';
 import WriteView from './WriteView';
@@ -9,7 +9,7 @@ class App extends React.Component {
     super(props);
     this.setNumberOfRegrets = this.setNumberOfRegrets.bind(this);
     this.state = {
-      numberOfRegrets: DEFAULT_MESSAGES.length
+      numberOfRegrets: FALLBACK_MESSAGES.length
     }
   }
 

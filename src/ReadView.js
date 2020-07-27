@@ -1,5 +1,5 @@
 import './App.css';
-import { sleep, DEFAULT_MESSAGES, LAMBDA_URL } from './Helper.js'
+import { sleep, FALLBACK_MESSAGES, LAMBDA_URL } from './Helper.js'
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import React from 'react';
@@ -28,7 +28,7 @@ class ReadView extends React.Component {
       });
     } else {
       let count = this.props.numberOfRegrets;
-      let randomMessage = DEFAULT_MESSAGES[Math.floor(Math.random() * count)]
+      let randomMessage = FALLBACK_MESSAGES[Math.floor(Math.random() * count)]
       this.setState({
         message: randomMessage
       });
@@ -47,7 +47,7 @@ class ReadView extends React.Component {
     //   })
     //   .catch(error => {
     //     this.setState({
-    //       message: DEFAULT_MESSAGES[Math.floor(Math.random() * DEFAULT_COUNT)]
+    //       message: FALLBACK_MESSAGES[Math.floor(Math.random() * DEFAULT_COUNT)]
     //     });
     //   });
   }
