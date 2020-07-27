@@ -21,35 +21,24 @@ class ReadView extends React.Component {
   }
 
   queryDb(onFirstLoad) {
-    if (1 === 1) {
-      this.props.setNumberOfRegrets(21);
-      this.setState({
-        message: "Getting married to the wrong person. Now Im close to 40, no kids, mostly bald. No one wants to take a chance on me. I just spent a weekend hanging out with friends who have 6-10 year olds and I really think I've missed out. I wasted my time and her time. Time is the one thing you cant get back. Don't waste it on the wrong person. Getting married to the wrong person. Now Im close to 40, no kids, mostly bald. No one wants to take a chance on me. I just spent a weekend hanging out with friends who have 6-10 year olds and I really think I've missed out. I wasted my time and her time. Time is the one thing you cant get back. Don't waste it on the wrong person."
-      });
-    } else {
-      let count = this.props.numberOfRegrets;
-      let randomMessage = FALLBACK_MESSAGES[Math.floor(Math.random() * count)]
-      this.setState({
-        message: randomMessage
-      });
-    }
     // axios.get(`${LAMBDA_URL}/read`)
-    //   .then(response => {
-    //     if (onFirstLoad) {
-    //       this.setState({
-    //         count: response.data.count
-    //       });
-    //     }
-    //     this.setState({
-    //       message: response.data.message
-    //     });
-    //     this.typeMessage(response.data.message)
-    //   })
-    //   .catch(error => {
-    //     this.setState({
-    //       message: FALLBACK_MESSAGES[Math.floor(Math.random() * DEFAULT_COUNT)]
-    //     });
-    //   });
+    axios.get(`https://httpbin.org/status/400`)
+      .then(response => {
+        if (onFirstLoad) {
+          this.props.setNumberOfRegrets(response.data.count);
+        }
+        this.setState({
+          message: response.data.message
+        });
+        this.typeMessage(response.data.message)
+      })
+      .catch(() => {
+        let count = FALLBACK_MESSAGES.length;
+        this.props.setNumberOfRegrets(count);
+        this.setState({
+          message: FALLBACK_MESSAGES[Math.floor(Math.random() * count)]
+        });
+      });
   }
 
   typeHeader() {
