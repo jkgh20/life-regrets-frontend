@@ -80,6 +80,7 @@ class WriteView extends React.Component {
 
         <Form.Control
           as="textarea" rows="3"
+          id="write-message"
           value={this.state.messageInput}
           rows="7"
           onChange={this.updateMessageInput}
