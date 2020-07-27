@@ -1,18 +1,4 @@
-* {
-  background-color: #111;
-}
-
-textarea {
-  color: #eee;
-  background-color: #181818;
-}
-
-#app {
-  color:   #eee;
-  margin: auto;
-  width: 50%;
-  padding: 10px;
-}
+/* Some notes for me learning CSS! */
 
 /*
 animation:
@@ -25,6 +11,28 @@ animation:
 - animation-fill-mode
 - animation-play-state
 */
+
+/*
+transition:
+- transition-property
+- transition-duration
+- transition-timing-function
+- transition-delay
+*/
+
+* {
+  background-color: #111;
+}
+
+#app-view {
+  color:   #eee;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+#read-view {
+}
 
 #read-header {
   animation:         fadeIn 2s linear 0s 1 normal forwards running;
@@ -53,22 +61,17 @@ animation:
   -webkit-animation: fadeIn 2s linear 1.3s 1 normal backwards running;
 }
 
-/*
-transition:
-- transition-property
-- transition-duration
-- transition-timing-function
-- transition-delay
-*/
+#write-view {
+}
 
 .fadeOut {
   opacity: 0;
-  transition: none 2s ease 10s;
+  transition: none 5s ease 5s;
 }
 
 .fadeIn {
   opacity: 1;
-  transition: none 2s ease 10s;
+  transition: none 5s ease 5s;
 }
 
 #footer {

@@ -22,7 +22,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div id="app">
+      <div id="app-view">
         <ReadView
           numberOfRegrets={this.state.numberOfRegrets}
           setNumberOfRegrets={this.setNumberOfRegrets}
