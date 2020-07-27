@@ -1,5 +1,5 @@
 import './App.css';
-import { FALLBACK_MESSAGES } from './Helper.js'
+import { FALLBACK_MESSAGES } from './Helper.js';
 import React from 'react';
 import ReadView from './ReadView';
 import WriteView from './WriteView';
@@ -14,7 +14,7 @@ class App extends React.Component {
     this.state = {
       numberOfRegrets: FALLBACK_MESSAGES.length,
       fMessageFinished: false
-    }
+    };
   }
 
   setNumberOfRegrets(count) {

@@ -1,5 +1,5 @@
 import './App.css';
-import { sleep, FALLBACK_MESSAGES, LAMBDA_URL } from './Helper.js'
+import { sleep, FALLBACK_MESSAGES, LAMBDA_URL } from './Helper.js';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import React from 'react';
@@ -21,13 +21,13 @@ class ReadView extends React.Component {
       requests: 0,
       message: "",
       messageFadeType: "hidden"
-    }
+    };
   }
 
   queryDb(onFirstLoad) {
-    // Each session can send at most 50 requests to prevent abuse
+    // Each session can read at most 50 remote requests to prevent abuse
     if (this.state.requests < 50) {
-      this.setState({ requests: this.state.requests + 1 })
+      this.setState({ requests: this.state.requests + 1 });
 
       // axios.get(`${LAMBDA_URL}/read`)
       axios.get(`https://httpbin.org/status/400`)
@@ -89,11 +89,11 @@ class ReadView extends React.Component {
 
     // Fade in read message border
     await sleep(1200);
-    this.setState({ messageFadeType: "slow-fade-in" })
+    this.setState({ messageFadeType: "slow-fade-in" });
 
     // Let header finish typing before typing random or queried message
     await sleep(1600);
-    this.typeMessage()
+    this.typeMessage();
   }
 
   componentWillUnmount() {

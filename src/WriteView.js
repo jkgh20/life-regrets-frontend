@@ -1,5 +1,5 @@
 import './App.css';
-import { sleep, LAMBDA_URL } from './Helper.js'
+import { sleep, LAMBDA_URL } from './Helper.js';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form'
@@ -16,9 +16,10 @@ class WriteView extends React.Component {
     this.resetState = this.resetState.bind(this);
 
     this.state = {
+      requests: 0,
       messageInput: "",
       fadeType: "medium-fade-in"
-    }
+    };
   }
 
   updateMessageInput(event) {
@@ -26,6 +27,12 @@ class WriteView extends React.Component {
   }
 
   writeToDb(inputMessage) {
+    // Who is going to sit down and write 25 regrets in a single session?
+    if (this.state.requests > 25) {
+      return;
+    }
+    this.setState({ requests: this.state.requests + 1 });
+
     let trimmed = inputMessage.trim();
     // Can you really say anything meaninful in less than 3 characters?
     if (trimmed.length < 3 || trimmed.length > 500) {
@@ -44,8 +51,7 @@ class WriteView extends React.Component {
     }
 
     axios.post(`${LAMBDA_URL}/write`, {message: trimmed})
-      .catch(() => {})
-      .then(() => {});
+      .catch(() => {});
   }
 
   async resetState() {
