@@ -13,10 +13,14 @@ class ReadView extends React.Component {
     this.typeHeader = this.typeHeader.bind(this);
     this.typeMessage = this.typeMessage.bind(this);
 
+    this.headerTyped = null;
+    this.messageTyped = null;
+
     this.state = {
       message: "",
       buttonFadeType: "hidden",
-      messageFadeType: "hidden"
+      messageFadeType: "hidden",
+      firstMessagedFinishedTyping: false
     }
   }
 
@@ -24,26 +28,28 @@ class ReadView extends React.Component {
     // axios.get(`${LAMBDA_URL}/read`)
     axios.get(`https://httpbin.org/status/400`)
       .then(response => {
-        if (onFirstLoad) {
-          this.props.setNumberOfRegrets(response.data.count);
-        }
+        let count = onFirstLoad ? response.data.count : this.props.numberOfRegrets;
+        let retrievedMessage = response.data.message
+
+        this.props.setNumberOfRegrets(count);
         this.setState({
-          message: response.data.message
+          message: retrievedMessage
         });
-        this.typeMessage(response.data.message)
       })
       .catch(() => {
         let count = FALLBACK_MESSAGES.length;
+        let randomMessage = FALLBACK_MESSAGES[Math.floor(Math.random() * count)];
+
         this.props.setNumberOfRegrets(count);
         this.setState({
-          message: FALLBACK_MESSAGES[Math.floor(Math.random() * count)]
+          message: randomMessage
         });
       });
   }
 
   typeHeader() {
     const options = {
-    	strings: ['Regrets.^1300 We all have them.^500', 'Someone regrets...'],
+      strings: ['Regrets.^1500 We all have them.^300', 'Someone regrets...'],
       typeSpeed: 20,
       backSpeed: 10,
       cursorChar: '_',
@@ -52,15 +58,19 @@ class ReadView extends React.Component {
     this.headerTyped = new Typed(this.headerText, options);
   }
 
-  typeMessage(message) {
+  typeMessage() {
+    if (this.messageTyped !== null) {
+      this.messageTyped.destroy();
+    }
+
     const options = {
-      strings: [message],
-      typeSpeed: 1,
-      backSpeed: 1,
+      strings: [this.state.message],
+      typeSpeed: 0,
+      backSpeed: 0,
       cursorChar: '_',
       onComplete: self => {
-        // TODO: Show everything else after rendering the 1st message
-        self.cursor.remove()
+        self.cursor.remove();
+        this.props.setMessageFinished();
       }
     };
     this.messageTyped = new Typed(this.messageText, options);
@@ -69,21 +79,19 @@ class ReadView extends React.Component {
   async componentDidMount() {
     this.typeHeader();
 
+    // Sleep for 2.5 seconds to prevent unnecessary queries on brief visits
+    await sleep(2000);
+    this.queryDb(true);
+
+    // Fade in read message border
+    await sleep(1200);
     this.setState({
       messageFadeType: "slow-fade-in"
     })
 
-    // Sleep for 2 seconds to prevent unnecessary queries on brief visits
-    await sleep(2000);
-    this.queryDb(true);
-
     // Let header finish typing before typing random or queried message
-    await sleep(2800);
-    this.typeMessage(this.state.message)
-
-    this.setState({
-      buttonFadeType: "slow-fade-in"
-    })
+    await sleep(1600);
+    this.typeMessage()
   }
 
   componentWillUnmount() {
@@ -95,23 +103,22 @@ class ReadView extends React.Component {
     return (
       <div id="read">
         <h1 className="slow-fade-in">
-          <span
-            ref={headerText => { this.headerText = headerText; }}
-          />
+          <span ref={headerText => { this.headerText = headerText; }} />
         </h1>
         <p id="read-message" className={this.state.messageFadeType}>
-          <span
-            ref={messageText => { this.messageText = messageText; }}
-          />
+          <span ref={messageText => { this.messageText = messageText; }} />
         </p>
 
         <div class="container">
           <div class="flex-item">
             <Button
-              className={this.state.buttonFadeType}
               variant="secondary"
               size="sm"
-              onClick={() => this.queryDb(false)}
+              className={this.props.fMessageFinished ? "medium-fade-in" : "hidden"}
+              onClick={() => {
+                this.queryDb(false);
+                this.typeMessage();
+              }}
             >Read Another</Button>
           </div>
         </div>

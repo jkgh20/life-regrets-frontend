@@ -17,7 +17,7 @@ class WriteView extends React.Component {
 
     this.state = {
       messageInput: "",
-      fadeType: "hidden"
+      fadeType: "medium-fade-in"
     }
   }
 
@@ -62,16 +62,9 @@ class WriteView extends React.Component {
     });
   }
 
-  async componentDidMount() {
-    await sleep(5000);
-    this.setState({
-      fadeType: "slow-fade-in"
-    });
-  }
-
   render() {
     return (
-      <div id="write-view" className={this.state.fadeType}>
+      <div id="write-view" className={this.props.fMessageFinished ? this.state.fadeType : "hidden"}>
         <h1>
           <span>
             {this.props.numberOfRegrets} regrets and counting... What's yours?

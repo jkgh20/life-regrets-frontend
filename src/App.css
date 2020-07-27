@@ -5,10 +5,10 @@
 #app-view {
   color: #eee;
 
-  width: 50%;
+  width: 45%;
   margin: auto;
 
-  padding-top: 10px;
+  padding-top: 20px;
 }
 
 #read-message {
@@ -23,7 +23,7 @@
 }
 
 #write-view {
-  padding-top: 5%;
+  padding-top: 6%;
 }
 
 #write-message {
@@ -51,6 +51,12 @@
   animation-name: fadeIn;
   animation-duration: 2s;
   animation-timing-function: linear;
+}
+
+.medium-fade-in {
+  animation-name: fadeIn;
+  animation-duration: 2s;
+  animation-timing-function: ease-out;
 }
 
 .quick-fade-in {
