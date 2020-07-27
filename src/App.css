@@ -40,10 +40,11 @@ animation:
 
   white-space: pre-wrap;
 
-  border: 3px solid #ccc;
+  border: 3px solid #eee;
   padding: 10px;
   word-wrap: break-word;
   overflow: scroll;
+  border-radius: 5px;
 
   animation:         fadeIn 2s linear 1.3s 1 normal backwards running;
   -o-animation:      fadeIn 2s linear 1.3s 1 normal backwards running;

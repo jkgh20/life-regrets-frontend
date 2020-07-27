@@ -2,6 +2,7 @@ import './App.css';
 import { sleep, LAMBDA_URL } from './Helper.js'
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form'
 import React from 'react';
 
 let CHARACTER_LIMIT = 500;
@@ -70,14 +71,15 @@ class WriteView extends React.Component {
             </span>
         </h1>
 
-        <textarea
+        <Form.Control
+          as="textarea" rows="3"
           value={this.state.messageInput}
-          rows="10"
-          cols="70"
+          rows="7"
           onChange={this.updateMessageInput}
           maxLength={CHARACTER_LIMIT}
           placeholder="I regret..."
         />
+
         <p>
             {this.state.messageInput.length}/{CHARACTER_LIMIT} characters
         </p>
