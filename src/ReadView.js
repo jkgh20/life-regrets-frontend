@@ -14,7 +14,9 @@ class ReadView extends React.Component {
     this.typeMessage = this.typeMessage.bind(this);
 
     this.state = {
-      message: ""
+      message: "",
+      buttonFadeType: "hidden",
+      messageFadeType: "hidden"
     }
   }
 
@@ -78,6 +80,10 @@ class ReadView extends React.Component {
   async componentDidMount() {
     this.typeHeader();
 
+    this.setState({
+      messageFadeType: "slow-fade-in"
+    })
+
     // Sleep for 2 seconds to prevent unnecessary queries on brief visits
     await sleep(2000);
     this.queryDb(true);
@@ -85,6 +91,10 @@ class ReadView extends React.Component {
     // Let header finish typing before typing random or queried message
     await sleep(2800);
     this.typeMessage(this.state.message)
+
+    this.setState({
+      buttonFadeType: "slow-fade-in"
+    })
   }
 
   componentWillUnmount() {
@@ -95,18 +105,18 @@ class ReadView extends React.Component {
   render() {
     return (
       <div id="read">
-        <h1 id="read-header">
+        <h1 className="slow-fade-in">
           <span
             ref={headerText => { this.headerText = headerText; }}
           />
         </h1>
-        <p id="read-message">
+        <p id="read-message" className={this.state.messageFadeType}>
           <span
-            // style={{ whiteSpace: 'pre' }}
             ref={messageText => { this.messageText = messageText; }}
           />
         </p>
         <Button
+          className={this.state.buttonFadeType}
           variant="secondary"
           size="sm"
           onClick={() => this.queryDb(false)}

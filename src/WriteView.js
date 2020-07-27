@@ -17,7 +17,7 @@ class WriteView extends React.Component {
 
     this.state = {
       messageInput: "",
-      visible: true
+      fadeType: "hidden"
     }
   }
 
@@ -52,23 +52,30 @@ class WriteView extends React.Component {
 
   async resetState() {
     this.setState({
-      visible: false
+      fadeType: "quick-fade-out"
     });
-    await sleep(400);
+    await sleep(500);
     this.props.setNumberOfRegrets(this.props.numberOfRegrets + 1);
     this.setState({
       messageInput: "",
-      visible: true
+      fadeType: "quick-fade-in"
+    });
+  }
+
+  async componentDidMount() {
+    await sleep(5000);
+    this.setState({
+      fadeType: "slow-fade-in"
     });
   }
 
   render() {
     return (
-      <div id="write" className={this.state.visible ? 'fadeIn' : 'fadeOut'}>
+      <div id="write" className={this.state.fadeType}>
         <h1>
-            <span>
-              {this.props.numberOfRegrets} regrets and counting... What's yours?
-            </span>
+          <span>
+            {this.props.numberOfRegrets} regrets and counting... What's yours?
+          </span>
         </h1>
 
         <Form.Control
@@ -81,7 +88,7 @@ class WriteView extends React.Component {
         />
 
         <p>
-            {this.state.messageInput.length}/{CHARACTER_LIMIT} characters
+          {this.state.messageInput.length}/{CHARACTER_LIMIT} characters
         </p>
 
         <Button
