@@ -10,6 +10,7 @@ class ReadView extends React.Component {
     super(props);
 
     this.queryDb = this.queryDb.bind(this);
+    this.setFallbackMessage = this.setFallbackMessage.bind(this);
     this.typeHeader = this.typeHeader.bind(this);
     this.typeMessage = this.typeMessage.bind(this);
 
@@ -17,34 +18,37 @@ class ReadView extends React.Component {
     this.messageTyped = null;
 
     this.state = {
+      requests: 0,
       message: "",
-      buttonFadeType: "hidden",
-      messageFadeType: "hidden",
-      firstMessagedFinishedTyping: false
+      messageFadeType: "hidden"
     }
   }
 
   queryDb(onFirstLoad) {
-    // axios.get(`${LAMBDA_URL}/read`)
-    axios.get(`https://httpbin.org/status/400`)
+    // Each session can send at most 50 requests to prevent abuse
+    if (this.state.requests < 50) {
+      this.setState({ requests: this.state.requests + 1 })
+
+      // axios.get(`${LAMBDA_URL}/read`)
+      axios.get(`https://httpbin.org/status/400`)
       .then(response => {
         let count = onFirstLoad ? response.data.count : this.props.numberOfRegrets;
         let retrievedMessage = response.data.message
 
         this.props.setNumberOfRegrets(count);
-        this.setState({
-          message: retrievedMessage
-        });
+        this.setState({ message: retrievedMessage });
       })
       .catch(() => {
-        let count = FALLBACK_MESSAGES.length;
-        let randomMessage = FALLBACK_MESSAGES[Math.floor(Math.random() * count)];
-
-        this.props.setNumberOfRegrets(count);
-        this.setState({
-          message: randomMessage
-        });
+        this.setFallbackMessage();
       });
+    } else {
+      this.setFallbackMessage();
+    }
+  }
+
+  setFallbackMessage() {
+    let randomMessage = FALLBACK_MESSAGES[Math.floor(Math.random() * FALLBACK_MESSAGES.length)];
+    this.setState({ message: randomMessage });
   }
 
   typeHeader() {
@@ -85,9 +89,7 @@ class ReadView extends React.Component {
 
     // Fade in read message border
     await sleep(1200);
-    this.setState({
-      messageFadeType: "slow-fade-in"
-    })
+    this.setState({ messageFadeType: "slow-fade-in" })
 
     // Let header finish typing before typing random or queried message
     await sleep(1600);

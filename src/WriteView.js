@@ -22,9 +22,7 @@ class WriteView extends React.Component {
   }
 
   updateMessageInput(event) {
-    this.setState({
-      messageInput: event.target.value,
-    });
+    this.setState({ messageInput: event.target.value, });
   }
 
   writeToDb(inputMessage) {
@@ -51,15 +49,12 @@ class WriteView extends React.Component {
   }
 
   async resetState() {
-    this.setState({
-      fadeType: "quick-fade-out"
-    });
+    this.setState({ fadeType: "quick-fade-out" });
+
     await sleep(500);
+
     this.props.setNumberOfRegrets(this.props.numberOfRegrets + 1);
-    this.setState({
-      messageInput: "",
-      fadeType: "quick-fade-in"
-    });
+    this.setState({ messageInput: "", fadeType: "quick-fade-in" });
   }
 
   render() {
@@ -85,7 +80,7 @@ class WriteView extends React.Component {
           <p class="fixed">
             {this.state.messageInput.length}/{CHARACTER_LIMIT} characters
           </p>
-          <div class="flex-item" style={{"padding-top": "16px"}}>
+          <div class="flex-item" style={{ "padding-top": "16px" }}>
             <Button
               class="flex-item"
               variant="secondary"
