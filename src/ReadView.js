@@ -1,6 +1,7 @@
 import './App.css';
 import { sleep, DEFAULT_MESSAGES, LAMBDA_URL } from './Helper.js'
 import axios from 'axios';
+import Button from 'react-bootstrap/Button';
 import React from 'react';
 import Typed from 'typed.js';
 
@@ -105,9 +106,11 @@ class ReadView extends React.Component {
             ref={messageText => { this.messageText = messageText; }}
           />
         </p>
-        <button
+        <Button
+          variant="secondary"
+          size="sm"
           onClick={() => this.queryDb(false)}
-        >Read Another</button>
+        >Read Another</Button>
       </div>
     );
   }

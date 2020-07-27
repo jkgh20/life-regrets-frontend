@@ -1,6 +1,7 @@
 import './App.css';
 import { sleep, LAMBDA_URL } from './Helper.js'
 import axios from 'axios';
+import Button from 'react-bootstrap/Button';
 import React from 'react';
 
 let CHARACTER_LIMIT = 500;
@@ -81,13 +82,15 @@ class WriteView extends React.Component {
             {this.state.messageInput.length}/{CHARACTER_LIMIT} characters
         </p>
 
-        <button
+        <Button
+          variant="secondary"
+          size="sm"
           disabled={this.state.messageInput.length < 1}
           onClick={() => {
             this.writeToDb(this.state.messageInput);
             this.resetState();
           }}
-        >Send</button>
+        >Send</Button>
       </div>
     );
   }
