@@ -66,7 +66,7 @@ class WriteView extends React.Component {
   render() {
     return (
       <div id="write-view" className={this.props.fMessageFinished ? this.state.fadeType : "hidden"}>
-        <h1>
+        <h1 id="header">
           <span>
             {this.props.numberOfRegrets} regrets and counting... What's yours?
           </span>

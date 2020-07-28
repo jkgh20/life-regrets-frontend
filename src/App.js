@@ -19,15 +19,11 @@ class App extends React.Component {
   }
 
   setNumberOfRegrets(count) {
-    this.setState({
-      numberOfRegrets: count
-    });
+    this.setState({ numberOfRegrets: count });
   }
 
   setMessageFinished() {
-    this.setState({
-      fMessageFinished: true
-    });
+    this.setState({ fMessageFinished: true });
   }
 
   render() {

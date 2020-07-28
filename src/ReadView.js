@@ -104,7 +104,7 @@ class ReadView extends React.Component {
   render() {
     return (
       <div id="read">
-        <h1 className="slow-fade-in">
+        <h1 id="header" className="slow-fade-in">
           <span ref={headerText => { this.headerText = headerText; }} />
         </h1>
         <div id="read-message" className={this.state.messageFadeType}>
