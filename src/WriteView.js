@@ -18,7 +18,7 @@ class WriteView extends React.Component {
     this.state = {
       requests: 0,
       messageInput: "",
-      fadeType: "medium-fade-in"
+      fadeType: "fmessage-fade-in"
     };
   }
 

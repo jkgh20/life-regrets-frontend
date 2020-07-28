@@ -58,10 +58,10 @@
   animation-timing-function: linear;
 }
 
-.medium-fade-in {
+.fmessage-fade-in {
   animation-name: fadeIn;
-  animation-duration: 2s;
-  animation-timing-function: ease-out;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
 }
 
 .quick-fade-in {

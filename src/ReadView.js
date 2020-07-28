@@ -116,7 +116,7 @@ class ReadView extends React.Component {
             <Button
               variant="secondary"
               size="sm"
-              className={this.props.fMessageFinished ? "medium-fade-in" : "hidden"}
+              className={this.props.fMessageFinished ? "fmessage-fade-in" : "hidden"}
               onClick={() => {
                 this.queryDb(false);
                 this.typeMessage();
