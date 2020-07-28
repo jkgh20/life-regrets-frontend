@@ -136,3 +136,14 @@
 #about-text:hover {
   text-decoration: underline;
 }
+
+.about-modal .modal-content {
+  color: #eee;
+  background-color: #111;
+}
+
+.about-modal .modal-content .modal-header {
+  text-align: center;
+  border-bottom-color: #111;
+  padding-bottom: 0px;
+}

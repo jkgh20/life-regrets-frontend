@@ -3,9 +3,9 @@ import React from 'react';
 
 function About(props) {
   return (
-    <Modal {...props} size="lg">
-      <Modal.Header closeButton>
-        <Modal.Title>
+    <Modal {...props} size="md" className="about-modal">
+      <Modal.Header>
+        <Modal.Title className="col-12">
           About
         </Modal.Title>
       </Modal.Header>
