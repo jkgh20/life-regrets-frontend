@@ -7,6 +7,10 @@ import React from 'react';
 
 let CHARACTER_LIMIT = 500;
 
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 class WriteView extends React.Component {
   constructor(props) {
     super(props);
@@ -15,8 +19,10 @@ class WriteView extends React.Component {
     this.writeToDb = this.writeToDb.bind(this);
     this.resetState = this.resetState.bind(this);
 
+    let formatted = numberWithCommas(this.props.numberOfRegrets)
     this.state = {
       requests: 0,
+      headerText: `${formatted} regrets and counting... What's yours?`,
       messageInput: "",
       fadeType: "fmessage-fade-in"
     };
@@ -68,7 +74,7 @@ class WriteView extends React.Component {
       <div id="write-view" className={this.props.fMessageFinished ? this.state.fadeType : "hidden"}>
         <h1 id="header">
           <span>
-            {this.props.numberOfRegrets} regrets and counting... What's yours?
+            {this.state.headerText}
           </span>
         </h1>
 
