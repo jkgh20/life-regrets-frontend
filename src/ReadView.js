@@ -25,8 +25,8 @@ class ReadView extends React.Component {
   }
 
   queryDb(onFirstLoad) {
-    // Each session can read at most 50 remote requests to prevent abuse
-    if (this.state.requests < 50) {
+    // Each session can read at most 100 remote requests to prevent abuse
+    if (this.state.requests < 100) {
       this.setState({ requests: this.state.requests + 1 });
 
       // axios.get(`${LAMBDA_URL}/read`)

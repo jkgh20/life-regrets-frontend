@@ -27,8 +27,8 @@ class WriteView extends React.Component {
   }
 
   writeToDb(inputMessage) {
-    // Who is going to sit down and write 25 regrets in a single session?
-    if (this.state.requests > 25) {
+    // Who is going to sit down and write 50 regrets in a single session?
+    if (this.state.requests > 50) {
       return;
     }
     this.setState({ requests: this.state.requests + 1 });
