@@ -1,13 +1,13 @@
 import React from 'react';
 
-function Footer(props) {
+function About(props) {
   return (
     <div
-      id="footer"
+      id="about"
       className={props.fMessageFinished ? "fmessage-fade-in" : "hidden"}
       onClick={() => {}}
     >About</div>
   );
 }
 
-export default Footer;
+export default About;

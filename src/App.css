@@ -127,18 +127,8 @@
   to   { opacity: 0; }
 }
 
-#footer {
+#about {
   color: #eee;
-
-  /* Keeps element centered */
   text-align: center;
-  width: 100%;
-
-  /* Prevents element from being right-justified */
-  left: 0;
-
-  /* Keeps element at the bottom */
-  position: fixed;
-  bottom: 0;
-  padding-bottom: 20px;
+  padding-top: 6%;
 }

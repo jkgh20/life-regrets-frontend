@@ -1,7 +1,7 @@
 import './App.css';
 import { FALLBACK_MESSAGES } from './Helper.js';
 import React from 'react';
-import Footer from './Footer';
+import About from './About';
 import ReadView from './ReadView';
 import WriteView from './WriteView';
 
@@ -44,7 +44,7 @@ class App extends React.Component {
           fMessageFinished={this.state.fMessageFinished}
         />
 
-        <Footer
+        <About
           fMessageFinished={this.state.fMessageFinished}
         />
       </div>
