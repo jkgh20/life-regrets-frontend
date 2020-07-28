@@ -14,7 +14,8 @@ class App extends React.Component {
 
     this.state = {
       numberOfRegrets: FALLBACK_MESSAGES.length,
-      fMessageFinished: false
+      fMessageFinished: false,
+      showModal: false
     };
   }
 
@@ -44,8 +45,16 @@ class App extends React.Component {
           fMessageFinished={this.state.fMessageFinished}
         />
 
+        <div id="about" className={this.state.fMessageFinished ? "fmessage-fade-in" : "hidden"}>
+          <span
+            id="about-text"
+            onClick={() => this.setState({ showModal: true })}
+          >About</span>
+        </div>
+
         <About
-          fMessageFinished={this.state.fMessageFinished}
+          show={this.state.showModal}
+          onHide={() => this.setState({ showModal: false })}
         />
       </div>
     );

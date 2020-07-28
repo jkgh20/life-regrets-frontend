@@ -132,3 +132,7 @@
   text-align: center;
   padding-top: 6%;
 }
+
+#about-text:hover {
+  text-decoration: underline;
+}
