@@ -74,12 +74,12 @@ class WriteView extends React.Component {
 
         <Form.Control
           as="textarea"
-          id="write-message"
-          value={this.state.messageInput}
           rows="7"
-          onChange={this.updateMessageInput}
           maxLength={CHARACTER_LIMIT}
           placeholder="I regret..."
+          value={this.state.messageInput}
+          id="write-message"
+          onChange={this.updateMessageInput}
         />
 
         <div class="container">
