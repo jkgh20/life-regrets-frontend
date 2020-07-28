@@ -66,7 +66,11 @@ class WriteView extends React.Component {
     await sleep(500);
 
     this.props.setNumberOfRegrets(this.props.numberOfRegrets + 1);
-    this.setState({ messageInput: "", fadeType: "quick-fade-in" });
+    this.setState({
+      headerText: `${this.props.numberOfRegrets} regrets and counting... Got another?`,
+      messageInput: "",
+      fadeType: "quick-fade-in"
+    });
   }
 
   render() {
