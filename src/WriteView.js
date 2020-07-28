@@ -50,7 +50,7 @@ class WriteView extends React.Component {
       return;
     }
 
-    axios.post(`${LAMBDA_URL}/write`, {message: trimmed})
+    axios.post(`${LAMBDA_URL}/write`, { message: trimmed })
       .catch(() => {});
   }
 
@@ -82,13 +82,13 @@ class WriteView extends React.Component {
           onChange={this.updateMessageInput}
         />
 
-        <div class="container">
-          <p class="fixed">
+        <div className="container">
+          <div className="flex-left">
             {this.state.messageInput.length}/{CHARACTER_LIMIT} characters
-          </p>
-          <div class="flex-item" style={{ "padding-top": "16px" }}>
+          </div>
+          <div className="flex-right">
             <Button
-              class="flex-item"
+              className="flex-right"
               variant="secondary"
               size="sm"
               disabled={this.state.messageInput.length < 1}
@@ -96,7 +96,7 @@ class WriteView extends React.Component {
                 this.writeToDb(this.state.messageInput);
                 this.resetState();
               }}
-            >Send</Button>
+              >Send</Button>
           </div>
         </div>
       </div>

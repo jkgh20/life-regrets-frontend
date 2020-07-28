@@ -107,12 +107,12 @@ class ReadView extends React.Component {
         <h1 className="slow-fade-in">
           <span ref={headerText => { this.headerText = headerText; }} />
         </h1>
-        <p id="read-message" className={this.state.messageFadeType}>
+        <div id="read-message" className={this.state.messageFadeType}>
           <span ref={messageText => { this.messageText = messageText; }} />
-        </p>
+        </div>
 
-        <div class="container">
-          <div class="flex-item">
+        <div className="container">
+          <div className="flex-right">
             <Button
               variant="secondary"
               size="sm"
