@@ -34,11 +34,16 @@ class ReadView extends React.Component {
       }
       axios.get(`${LAMBDA_URL}/read`, data)
       .then(response => {
-        let count = onFirstLoad ? response.data.count : this.props.numberOfRegrets;
-        let retrievedMessage = response.data.message
+        // TODO: Refactor and check on status code
+        if (response.data.count === undefined || response.data.message === undefined) {
+          this.setFallbackMessage();
+        } else {
+          let count = onFirstLoad ? response.data.count : this.props.numberOfRegrets;
+          let retrievedMessage = response.data.message
 
-        this.props.setNumberOfRegrets(count);
-        this.setState({ message: retrievedMessage });
+          this.props.setNumberOfRegrets(count);
+          this.setState({ message: retrievedMessage });
+        }
       })
       .catch(() => {
         this.setFallbackMessage();
