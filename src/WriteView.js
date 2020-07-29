@@ -55,7 +55,11 @@ class WriteView extends React.Component {
       return;
     }
 
-    axios.post(`${LAMBDA_URL}/write`, { message: trimmed })
+    let data = {
+      sender: window.location.href,
+      message: trimmed
+    }
+    axios.post(`${LAMBDA_URL}/write`, data)
       .catch(() => {});
   }
 

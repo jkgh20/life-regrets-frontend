@@ -29,7 +29,10 @@ class ReadView extends React.Component {
     if (this.state.requests < 100) {
       this.setState({ requests: this.state.requests + 1 });
 
-      axios.get(`${LAMBDA_URL}/read`)
+      let data = {
+        sender: window.location.href
+      }
+      axios.get(`${LAMBDA_URL}/read`, data)
       .then(response => {
         let count = onFirstLoad ? response.data.count : this.props.numberOfRegrets;
         let retrievedMessage = response.data.message
