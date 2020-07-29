@@ -1,7 +1,7 @@
 import './App.css';
 import { FALLBACK_MESSAGES } from './Helper.js';
-import React from 'react';
 import About from './About';
+import React from 'react';
 import ReadView from './ReadView';
 import WriteView from './WriteView';
 
