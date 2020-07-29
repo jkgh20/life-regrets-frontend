@@ -1,9 +1,12 @@
-#header {
-  font-size: 30px;
+:root {
+  --black: #111;
+  --white: #eee;
 }
 
+/******************************** General view ********************************/
+
 #app-view {
-  color: #eee;
+  color: var(--white);
 
   max-width: 600px;
   width: 95%;
@@ -12,8 +15,14 @@
   padding-top: 6px;
 }
 
+#header {
+  font-size: 30px;
+}
+
+/********************************* Read view **********************************/
+
 #read-message {
-  border: 3px solid #eee;
+  border: 3px solid var(--white);
   border-radius: 5px;
   height: 192px;
   padding: 10px;
@@ -23,19 +32,23 @@
   word-wrap: break-word;
 }
 
+/********************************* Write view *********************************/
+
 #write-view {
   padding-top: 6%;
 }
 
 #write-message {
-  background-color: #111;
-  color:   #eee;
+  background-color: var(--black);
+  color: var(--white);
 
   resize: none;
-  border: 3px solid #eee;
+  border: 3px solid var(--white);
   border-radius: 5px;
   padding: 9px;
 }
+
+/*************************** Side-by-side elements ****************************/
 
 .container {
   display: flex;
@@ -49,6 +62,8 @@
   margin-left: auto;
   padding-top: 12px;
 }
+
+/************************ Control visibility and fade *************************/
 
 .hidden {
   opacity: 0
@@ -128,8 +143,9 @@
   to   { opacity: 0; }
 }
 
+/******************************** About modal *********************************/
+
 #about {
-  color: #eee;
   text-align: center;
   padding-top: 6%;
 }
@@ -139,12 +155,12 @@
 }
 
 .about-modal .modal-content {
-  color: #eee;
-  background-color: #111;
+  color: var(--white);
+  background-color: var(--black);
 }
 
 .about-modal .modal-content .modal-header {
   text-align: center;
-  border-bottom-color: #111;
+  border-bottom-color: var(--black);
   padding-bottom: 0px;
 }
