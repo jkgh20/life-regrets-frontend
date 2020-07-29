@@ -1,6 +1,7 @@
 :root {
   --black: #111;
   --white: #eee;
+  --vertical-edge-spacing: 6px;
 }
 
 /******************************** General view ********************************/
@@ -12,7 +13,7 @@
   width: 95%;
   margin: auto;
 
-  padding-top: 6px;
+  padding-top: var(--vertical-edge-spacing);
 }
 
 #header {
@@ -148,6 +149,7 @@
 #about {
   text-align: center;
   padding-top: 6%;
+  padding-bottom: var(--vertical-edge-spacing);
 }
 
 #about-text:hover {
