@@ -19,10 +19,9 @@ class WriteView extends React.Component {
     this.writeToDb = this.writeToDb.bind(this);
     this.resetState = this.resetState.bind(this);
 
-    let formatted = numberWithCommas(this.props.numberOfRegrets)
     this.state = {
       requests: 0,
-      headerText: `${formatted} regrets and counting... What's yours?`,
+      headerQuestion: "What's yours?",
       messageInput: "",
       fadeType: "fmessage-fade-in"
     };
@@ -67,7 +66,7 @@ class WriteView extends React.Component {
 
     this.props.setNumberOfRegrets(this.props.numberOfRegrets + 1);
     this.setState({
-      headerText: `${this.props.numberOfRegrets} regrets and counting... Got another?`,
+      headerQuestion: "Got another?",
       messageInput: "",
       fadeType: "quick-fade-in"
     });
@@ -78,7 +77,7 @@ class WriteView extends React.Component {
       <div id="write-view" className={this.props.fMessageFinished ? this.state.fadeType : "hidden"}>
         <h1 id="header">
           <span>
-            {this.state.headerText}
+            {numberWithCommas(this.props.numberOfRegrets)} regrets and counting... {this.state.headerQuestion}
           </span>
         </h1>
 
