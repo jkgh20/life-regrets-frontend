@@ -22,5 +22,5 @@ npm run deploy
 ```
 
 This creates and pushes a commit to the `gh-pages` remote branch on behalf of
-your GitHub user. Note that these commits are production optimzed and contain
+your GitHub user. Note that these commits are production optimized and contain
 only minified files.
