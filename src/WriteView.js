@@ -101,7 +101,6 @@ class WriteView extends React.Component {
           </div>
           <div className="flex-right">
             <Button
-              className="flex-right"
               variant="secondary"
               size="sm"
               disabled={this.state.messageInput.length < 1}
