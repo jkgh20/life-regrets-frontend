@@ -80,9 +80,7 @@ class WriteView extends React.Component {
     return (
       <div id="write-view" className={this.props.fMessageFinished ? this.state.fadeType : "hidden"}>
         <h1 id="header">
-          <span>
-            {numberWithCommas(this.props.numberOfRegrets)} regrets and counting... {this.state.headerQuestion}
-          </span>
+          {numberWithCommas(this.props.numberOfRegrets)} regrets and counting... {this.state.headerQuestion}
         </h1>
 
         <Form.Control
