@@ -1,6 +1,6 @@
 :root {
   --black: #111;
-  --white: #eee;
+  --white: #ddd;
   --vertical-edge-spacing: 6px;
 }
 
@@ -165,4 +165,8 @@
   text-align: center;
   border-bottom-color: var(--black);
   padding-bottom: 0px;
+}
+
+.regret-word {
+  color: #fff;
 }
