@@ -9,7 +9,7 @@ class ReadView extends React.Component {
   constructor(props) {
     super(props);
 
-    this.queryDb = this.queryDb.bind(this);
+    this.displayMessage = this.displayMessage.bind(this);
     this.setFallbackMessage = this.setFallbackMessage.bind(this);
     this.typeHeader = this.typeHeader.bind(this);
     this.typeMessage = this.typeMessage.bind(this);
@@ -24,7 +24,7 @@ class ReadView extends React.Component {
     };
   }
 
-  queryDb(onFirstLoad) {
+  async displayMessage(onFirstLoad) {
     // Each session can read at most 100 remote requests to prevent abuse
     if (this.state.requests < 100) {
       this.setState({ requests: this.state.requests + 1 });
@@ -37,20 +37,29 @@ class ReadView extends React.Component {
       .then(response => {
         // TODO: Refactor and check on status code
         if (response.data.count === undefined || response.data.message === undefined) {
-          this.setFallbackMessage();
-        } else {
-          let count = onFirstLoad ? response.data.count : this.props.numberOfRegrets;
-          let retrievedMessage = response.data.message
-
-          this.props.setNumberOfRegrets(count);
-          this.setState({ message: retrievedMessage });
+          throw new Error('Bad response');;
         }
+        let count = onFirstLoad ? response.data.count : this.props.numberOfRegrets;
+        let retrievedMessage = response.data.message;
+
+        this.props.setNumberOfRegrets(count);
+        this.setState({ message: retrievedMessage });
       })
       .catch(() => {
         this.setFallbackMessage();
+      }).then(() => {
+        if (onFirstLoad) {
+          return sleep(2500);
+        }
+      }).then(() => {
+        this.typeMessage();
       });
     } else {
       this.setFallbackMessage();
+      if (onFirstLoad) {
+        await sleep(2500);
+      }
+      this.typeMessage();
     }
   }
 
@@ -91,17 +100,13 @@ class ReadView extends React.Component {
   async componentDidMount() {
     this.typeHeader();
 
-    // Sleep for 2.5 seconds to prevent unnecessary queries on brief visits
+    // Sleep for 2 seconds to prevent unnecessary queries on brief visits
     await sleep(2000);
-    this.queryDb(true);
+    this.displayMessage(true);
 
     // Fade in read message border
     await sleep(1200);
     this.setState({ messageFadeType: "slow-fade-in" });
-
-    // Let header finish typing before typing random or queried message
-    await sleep(1600);
-    this.typeMessage();
   }
 
   componentWillUnmount() {
@@ -125,10 +130,7 @@ class ReadView extends React.Component {
               variant="secondary"
               size="sm"
               className={this.props.fMessageFinished ? "fmessage-fade-in" : "hidden"}
-              onClick={() => {
-                this.queryDb(false);
-                this.typeMessage();
-              }}
+              onClick={() => this.displayMessage(false)}
             >Read Another</Button>
           </div>
         </div>

@@ -166,3 +166,8 @@
   border-bottom-color: var(--black);
   padding-bottom: 0px;
 }
+
+.close {
+  color: #fff;
+  opacity: 1;
+}

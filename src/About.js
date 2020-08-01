@@ -4,9 +4,9 @@ import React from 'react';
 function About(props) {
   return (
     <Modal {...props} size="md" className="about-modal">
-      <Modal.Header>
-        <Modal.Title className="col-12">
-          About
+      <Modal.Header closeButton>
+        <Modal.Title>
+          Author's Note
         </Modal.Title>
       </Modal.Header>
 
@@ -18,7 +18,7 @@ whimsical while others show a deep longing for a reality that isn't.
 <br />
 Regrets often bring pain. Most of us have something we'd like to change about
 our lives. Some wish they didn't have this life at all. I believe the gnawing
-sense of having had and lost some infinite thing starts in adolescence, finds
+sense of having had and lost some intangible thing starts in adolescence, finds
 its peaks during adulthood, and finally quiets down when we not only know but
 deeply understand that life just <em>is</em>.
 <br />
