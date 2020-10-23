@@ -11,9 +11,10 @@ function About(props) {
       </Modal.Header>
 
       <Modal.Body>
-Regrets are a funny thing. They often paint a picture of one's wants and desires
-moreso than asking that person directly. As one might come to read, some are
-whimsical while others show a deep longing for a reality that isn't.
+Regrets are a funny thing. They often paint a more accurate picture of one's
+wants and desires moreso than directly asking that person. As one might come to
+read on this site, some are whimsical while others show a deep longing for a
+reality that isn't.
 <br />
 <br />
 Regrets often bring pain. Most of us have something we'd like to change about
@@ -33,13 +34,12 @@ In my own journey, I myself have come to believe that my feelings of
 regret stem not from my circumstances, but from who I am as a person - and I'm
 incredibly lucky to be able to say that. I'm realizing that even if I were given
 a chance to start over, I would STILL have regrets and want to do it over again.
-Call this a personal moment of catharsis if you will.
 <br />
 <br />
-I do hope you'll walk away with <em>something</em> after reading a couple of
-these entries. Some of the biggest moments of clarity can come from the most
-mundane moments. If you get the chance, call your family and give your ma a big
-hug.
+I hope you'll walk away with <em>something</em> after reading a couple of these
+entries. Some of the biggest moments of clarity can come from the most mundane
+moments. If you get the chance, call your family and give your ma a big
+hug. Appreciate the little things :)
       </Modal.Body>
     </Modal>
   );

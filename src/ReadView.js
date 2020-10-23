@@ -33,7 +33,7 @@ class ReadView extends React.Component {
         sender: window.location.href
       }
       // TODO: Can we send data with a get?
-      axios.post(`${LAMBDA_URL}/read`, data)
+      axios.post(`${LAMBDA_URL}/regrets-read`, data)
       .then(response => {
         // TODO: Refactor and check on status code
         if (response.data.count === undefined || response.data.message === undefined) {
